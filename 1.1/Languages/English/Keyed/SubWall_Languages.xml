@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<LanguageData>
+<SubWall_mod>Submersible Walls</SubWall_mod>
+<SubWall_Changes>Changes made will immediately take effect on a map restart changing states of the walls.</SubWall_Changes>
+<SubWall_ticksToAction>Seconds for the wall to change state: </SubWall_ticksToAction>
+<SubWall_powerAction>Power consumed while the walls are changing states: </SubWall_powerAction>
+<SubWall_SubAction>Submerge Wall</SubWall_SubAction>
+<SubWall_SubActionDesc>Submerge the selected walls, creating a passage through.</SubWall_SubActionDesc>
+<SubWall_MannedError>Requires a manned security console!</SubWall_MannedError>
+<SubWall_PowerError>Needs power!</SubWall_PowerError>
+<SubWall_PendError>Action is in effect!</SubWall_PendError>
+<SubWall_RiseAction>Surface Wall</SubWall_RiseAction>
+<SubWall_RiseActionDesc>Surfaces the selected walls, blocking passage through.</SubWall_RiseActionDesc>
+</LanguageData>
