@@ -1,0 +1,14 @@
+<Defs>
+  <ResearchProjectDef>
+    <defName>Hydraulics</defName>
+    <label>hydraulics</label>
+    <description>Build submersible walls that can block passages and allow passage with control.</description>
+    <baseCost>1000</baseCost>
+    <techLevel>Industrial</techLevel>
+    <prerequisites>
+      <li>Machining</li>
+    </prerequisites>
+    <researchViewX>9.00</researchViewX>
+    <researchViewY>4.80</researchViewY>
+  </ResearchProjectDef>
+</Defs>
