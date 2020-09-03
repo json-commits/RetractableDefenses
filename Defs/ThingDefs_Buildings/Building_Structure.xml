@@ -141,7 +141,6 @@
       <li Class="CompProperties_Breakdownable"/>
 	  <li Class="CompProperties_Mannable"/>
     </comps>
-    <designationHotKey>Misc3</designationHotKey>
     <placeWorkers>
       <li>PlaceWorker_PreventInteractionSpotOverlap</li>
     </placeWorkers>
@@ -150,4 +149,71 @@
     </researchPrerequisites>
     <constructionSkillPrerequisite>5</constructionSkillPrerequisite>
   </ThingDef>
+
+	<ThingDef ParentName="BuildingBase" Name="RetDef_Gate">
+		<defName>ClosedGate</defName>
+		<label>closed gate</label>
+		<description>An impassable heavy gate that requires a lot of work to open and close.</description>
+		<thingClass>Subwall.ClosedGate</thingClass>
+		<graphicData>
+			<texPath>Things/Building/Security/Gate</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<drawSize>(5,2)</drawSize>
+			<damageData>
+				<cornerTL>Damage/Corner</cornerTL>
+				<cornerTR>Damage/Corner</cornerTR>
+				<cornerBL>Damage/Corner</cornerBL>
+				<cornerBR>Damage/Corner</cornerBR>
+				<edgeTop>Damage/Edge</edgeTop>
+				<edgeBot>Damage/Edge</edgeBot>
+				<edgeLeft>Damage/Edge</edgeLeft>
+				<edgeRight>Damage/Edge</edgeRight>
+			</damageData>
+		</graphicData>
+		<altitudeLayer>Weather</altitudeLayer>
+		<uiIconPath>Things/Building/Security/Gate</uiIconPath>
+		<statBases>
+			<MaxHitPoints>240</MaxHitPoints>
+			<WorkToBuild>65</WorkToBuild>
+		</statBases>
+		<size>(5,2)</size>
+		<pathCost>70</pathCost>
+		<costStuffCount>25</costStuffCount>
+		<costList>
+			<Steel>10</Steel>
+		</costList>    
+		<stuffCategories>
+			<li>Metallic</li>
+			<li>Woody</li>
+			<li>Stony</li>
+		</stuffCategories>
+		<defaultPlacingRot>North</defaultPlacingRot>
+		<interactionCellOffset>(0,0,2)</interactionCellOffset>
+		<hasInteractionCell>true</hasInteractionCell>
+		<terrainAffordanceNeeded>Medium</terrainAffordanceNeeded>
+		<designationCategory>Security</designationCategory>
+		<passability>Impassable</passability>
+        <blockWind>true</blockWind>
+		<holdsRoof>true</holdsRoof>
+		<neverMultiSelect>true</neverMultiSelect>
+		<blockLight>True</blockLight>
+		<tickerType>Normal</tickerType>
+		<comps>
+			<li Class="CompProperties_Mannable"/>
+		</comps>
+		<researchPrerequisites>
+			<li>Hydraulics</li>
+		</researchPrerequisites>	
+	</ThingDef>
+	<ThingDef ParentName="RetDef_Gate">
+		<defName>OpenGate</defName>
+		<label>opened gate</label>
+		<thingClass>Subwall.OpenedGate</thingClass>
+		<graphicData>
+			<texPath>Things/Building/Security/OpenGate</texPath>
+		</graphicData>
+		<uiIconPath>Things/Building/Security/OpenGate</uiIconPath>
+		<pathCost>0</pathCost>
+		<passability>PassThroughOnly</passability>
+	</ThingDef>
 </Defs>
