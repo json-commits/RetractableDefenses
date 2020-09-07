@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+	<!--Medieval Tech-->
+	<JobDef>
+		<defName>RetDef_OpenGate</defName>
+		<driverClass>SubWall.JobDriver_OpenGate</driverClass>
+		<reportString>opening gate.</reportString>
+	</JobDef>
+
+	<JobDef>
+		<defName>RetDef_CloseGate</defName>
+		<driverClass>SubWall.JobDriver_CloseGate</driverClass>
+		<reportString>closing gate.</reportString>
+	</JobDef>
+</Defs>

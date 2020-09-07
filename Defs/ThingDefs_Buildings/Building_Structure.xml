@@ -154,7 +154,7 @@
 		<defName>ClosedGate</defName>
 		<label>closed gate</label>
 		<description>An impassable heavy gate that requires a lot of work to open and close.</description>
-		<thingClass>Subwall.ClosedGate</thingClass>
+		<thingClass>Subwall.Gate</thingClass>
 		<graphicData>
 			<texPath>Things/Building/Security/Gate</texPath>
 			<graphicClass>Graphic_Single</graphicClass>
@@ -178,29 +178,24 @@
 		</statBases>
 		<size>(5,2)</size>
 		<pathCost>70</pathCost>
-		<costStuffCount>25</costStuffCount>
+		<costStuffCount>200</costStuffCount>
 		<costList>
-			<Steel>10</Steel>
+			<Steel>50</Steel>
 		</costList>    
 		<stuffCategories>
-			<li>Metallic</li>
 			<li>Woody</li>
-			<li>Stony</li>
 		</stuffCategories>
 		<defaultPlacingRot>North</defaultPlacingRot>
-		<interactionCellOffset>(0,0,2)</interactionCellOffset>
 		<hasInteractionCell>true</hasInteractionCell>
 		<terrainAffordanceNeeded>Medium</terrainAffordanceNeeded>
 		<designationCategory>Security</designationCategory>
 		<passability>Impassable</passability>
         <blockWind>true</blockWind>
 		<holdsRoof>true</holdsRoof>
+		<fillPercent>1</fillPercent>
 		<neverMultiSelect>true</neverMultiSelect>
 		<blockLight>True</blockLight>
 		<tickerType>Normal</tickerType>
-		<comps>
-			<li Class="CompProperties_Mannable"/>
-		</comps>
 		<researchPrerequisites>
 			<li>Hydraulics</li>
 		</researchPrerequisites>	
@@ -208,12 +203,12 @@
 	<ThingDef ParentName="RetDef_Gate">
 		<defName>OpenGate</defName>
 		<label>opened gate</label>
-		<thingClass>Subwall.OpenedGate</thingClass>
 		<graphicData>
 			<texPath>Things/Building/Security/OpenGate</texPath>
 		</graphicData>
 		<uiIconPath>Things/Building/Security/OpenGate</uiIconPath>
 		<pathCost>0</pathCost>
 		<passability>PassThroughOnly</passability>
+		<fillPercent>0</fillPercent>
 	</ThingDef>
 </Defs>
