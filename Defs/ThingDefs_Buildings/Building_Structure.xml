@@ -1,0 +1,288 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+	<ThingDef ParentName="Wall" Name="SubW_SubmersibleWall">
+		<defName>SubmersibleWall</defName>
+		<label>submersible wall</label>
+		<description>An impassable wall that submerges when commanded to.</description>
+		<thingClass>Subwall.SurfacedWall</thingClass>
+		<graphicData>
+			<texPath>Things/Building/Linked/SubWall_Atlas</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<shaderType>CutoutComplex</shaderType>
+			<linkType>CornerFiller</linkType>
+			<linkFlags>
+				<li>Wall</li>
+				<li>Rock</li>
+			</linkFlags>
+			<damageData>
+				<cornerTL>Damage/Corner</cornerTL>
+				<cornerTR>Damage/Corner</cornerTR>
+				<cornerBL>Damage/Corner</cornerBL>
+				<cornerBR>Damage/Corner</cornerBR>
+				<edgeTop>Damage/Edge</edgeTop>
+				<edgeBot>Damage/Edge</edgeBot>
+				<edgeLeft>Damage/Edge</edgeLeft>
+				<edgeRight>Damage/Edge</edgeRight>
+			</damageData>
+		</graphicData>
+		<uiIconPath>Things/Building/Linked/SubWallBricks_MenuIcon</uiIconPath>
+		<statBases>
+			<MaxHitPoints>300</MaxHitPoints>
+			<WorkToBuild>200</WorkToBuild>
+		</statBases>
+		<pathCost>70</pathCost>
+		<costStuffCount>5</costStuffCount>
+		<costList>
+			<Steel>10</Steel>
+			<ComponentIndustrial>1</ComponentIndustrial>
+		</costList>
+		<passability>Impassable</passability>
+        <blockWind>true</blockWind>
+		<holdsRoof>false</holdsRoof>
+		<neverMultiSelect>false</neverMultiSelect>
+		<blockLight>True</blockLight>
+		<tickerType>Normal</tickerType>
+		<comps>
+			<li Class="CompProperties_Power">
+				<compClass>CompPowerTrader</compClass>
+				<basePowerConsumption>15</basePowerConsumption>
+				<transmitsPower>true</transmitsPower>
+			</li>
+		</comps>
+		<researchPrerequisites>
+			<li>Hydraulics</li>
+		</researchPrerequisites>	
+	</ThingDef>
+
+	<ThingDef ParentName="SubW_SubmersibleWall">
+        <defName>SubmersedWall</defName>
+        <label>submerged wall</label>
+		<description>A passable submerged wall that surfaces when commanded to.</description>
+		<thingClass>Subwall.SubmersedWall</thingClass>
+		<designationCategory></designationCategory>
+				<graphicData>
+			<texPath>Things/Building/Linked/SubWallSink_Atlas</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<shaderType>CutoutComplex</shaderType>
+			<linkType>CornerFiller</linkType>
+			<linkFlags>
+				<li>Barricades</li>
+				<li>Rock</li>
+			</linkFlags>
+			<damageData>
+				<cornerTL>Damage/Corner</cornerTL>
+				<cornerTR>Damage/Corner</cornerTR>
+				<cornerBL>Damage/Corner</cornerBL>
+				<cornerBR>Damage/Corner</cornerBR>
+				<edgeTop>Damage/Edge</edgeTop>
+				<edgeBot>Damage/Edge</edgeBot>
+				<edgeLeft>Damage/Edge</edgeLeft>
+				<edgeRight>Damage/Edge</edgeRight>
+			</damageData>
+		</graphicData>
+		<uiIconPath>Things/Building/Linked/SubWallSink_MenuIcon</uiIconPath>
+		<pathCost>0</pathCost>
+		<pathCostIgnoreRepeat>true</pathCostIgnoreRepeat>
+        <passability>Standable</passability>
+        <blockWind>false</blockWind>
+        <fillPercent>0</fillPercent>
+		<coversFloor>false</coversFloor>
+        <staticSunShadowHeight></staticSunShadowHeight>
+        <blockLight>false</blockLight>
+    </ThingDef>
+
+  <ThingDef ParentName="BuildingBase">
+    <defName>UtilityConsole</defName>
+    <label>utility console</label>
+    <description>Allows control over submersible walls connected to the power grid.</description>
+    <thingClass>SubWall.UtilityConsole</thingClass>
+    <graphicData>
+      <texPath>Things/Building/Security/UtilityConsole</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <drawSize>(3,2)</drawSize>
+      <damageData>
+        <rect>(0,0,1.8,0.9)</rect>
+        <cornerBL>Damage/Corner</cornerBL>
+        <cornerBR>Damage/Corner</cornerBR>
+      </damageData>
+    </graphicData>
+	<castEdgeShadows>true</castEdgeShadows>
+    <staticSunShadowHeight>0.20</staticSunShadowHeight>
+    <altitudeLayer>Building</altitudeLayer>
+    <passability>PassThroughOnly</passability>
+    <pathCost>70</pathCost>
+    <blockWind>true</blockWind>
+    <fillPercent>0.5</fillPercent>
+    <canOverlapZones>false</canOverlapZones>
+    <statBases>
+      <MaxHitPoints>150</MaxHitPoints>
+      <WorkToBuild>1000</WorkToBuild>
+      <Flammability>0.6</Flammability>
+    </statBases>
+    <size>(3,2)</size>
+    <costList>
+      <Steel>100</Steel>
+      <ComponentIndustrial>4</ComponentIndustrial>
+      <ComponentSpacer>1</ComponentSpacer>
+    </costList>
+    <defaultPlacingRot>North</defaultPlacingRot>
+    <interactionCellOffset>(0,0,-1)</interactionCellOffset>
+    <hasInteractionCell>true</hasInteractionCell>
+    <terrainAffordanceNeeded>Medium</terrainAffordanceNeeded>
+    <designationCategory>Security</designationCategory>
+    <comps>
+      <li Class="CompProperties_Power">
+        <compClass>CompPowerTrader</compClass>
+        <shortCircuitInRain>true</shortCircuitInRain>
+        <basePowerConsumption>75</basePowerConsumption>
+      </li>
+      <li Class="CompProperties_Flickable"/>
+      <li Class="CompProperties_Breakdownable"/>
+	  <li Class="CompProperties_Mannable"/>
+    </comps>
+    <placeWorkers>
+      <li>PlaceWorker_PreventInteractionSpotOverlap</li>
+    </placeWorkers>
+    <researchPrerequisites>
+      <li>Hydraulics</li>
+    </researchPrerequisites>
+    <constructionSkillPrerequisite>5</constructionSkillPrerequisite>
+  </ThingDef>
+
+	<!--Medieval Tech-->
+	
+	<ThingDef ParentName="BuildingBase" Name="RetDef_Gate">
+		<defName>ClosedGate</defName>
+		<label>closed gate</label>
+		<description>A closed impassable heavy gate that requires a lot of work to open and close.</description>
+		<thingClass>Subwall.Gate</thingClass>
+		<graphicData>
+			<texPath>Things/Building/Structure/Gate</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<drawSize>(5,2)</drawSize>
+			<damageData>
+				<cornerTL>Damage/Corner</cornerTL>
+				<cornerTR>Damage/Corner</cornerTR>
+				<cornerBL>Damage/Corner</cornerBL>
+				<cornerBR>Damage/Corner</cornerBR>
+				<edgeTop>Damage/Edge</edgeTop>
+				<edgeBot>Damage/Edge</edgeBot>
+				<edgeLeft>Damage/Edge</edgeLeft>
+				<edgeRight>Damage/Edge</edgeRight>
+			</damageData>
+		</graphicData>
+		<altitudeLayer>Weather</altitudeLayer>
+		<uiIconPath>Things/Building/Structure/Gate</uiIconPath>
+		<statBases>
+			<MaxHitPoints>400</MaxHitPoints>
+			<WorkToBuild>300</WorkToBuild>
+		</statBases>
+		<size>(5,2)</size>
+		<pathCost>70</pathCost>
+		<costStuffCount>200</costStuffCount>
+		<costList>
+			<Steel>50</Steel>
+		</costList>    
+		<stuffCategories>
+			<li>Woody</li>
+			<li>Stony</li>
+		</stuffCategories>
+		<defaultPlacingRot>North</defaultPlacingRot>
+		<terrainAffordanceNeeded>Medium</terrainAffordanceNeeded>
+		<designationCategory>Structure</designationCategory>
+		<passability>Impassable</passability>
+        <blockWind>true</blockWind>
+		<holdsRoof>true</holdsRoof>
+		<fillPercent>1</fillPercent>
+		<neverMultiSelect>true</neverMultiSelect>
+		<blockLight>True</blockLight>
+		<tickerType>Normal</tickerType>
+		<researchPrerequisites>
+			<li>StrongHinges</li>
+		</researchPrerequisites>	
+	</ThingDef>
+	
+	<ThingDef ParentName="RetDef_Gate">
+		<defName>OpenGate</defName>
+		<label>opened gate</label>
+		<description>An opened impassable heavy gate that requires a lot of work to open and close.</description>
+		<designationCategory></designationCategory>
+		<graphicData>
+			<texPath>Things/Building/Structure/OpenGate</texPath>
+		</graphicData>
+		<uiIconPath>Things/Building/Structure/OpenGate</uiIconPath>
+		<pathCost>0</pathCost>
+		<passability>PassThroughOnly</passability>
+		<fillPercent>0</fillPercent>
+		<blockLight>False</blockLight>
+        <blockWind>false</blockWind>
+	</ThingDef>
+	
+	<ThingDef ParentName="BuildingBase" Name="RetDef_Port">
+		<defName>ClosedPortcullis</defName>
+		<label>closed portcullis</label>
+		<description>A closed impassable heavy portcullis that requires a lot of work to open but swift to close.</description>
+		<thingClass>Subwall.Gate</thingClass>
+		<graphicData>
+			<texPath>Things/Building/Structure/Portcullis</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<drawSize>(5,1)</drawSize>
+			<damageData>
+				<cornerTL>Damage/Corner</cornerTL>
+				<cornerTR>Damage/Corner</cornerTR>
+				<cornerBL>Damage/Corner</cornerBL>
+				<cornerBR>Damage/Corner</cornerBR>
+				<edgeTop>Damage/Edge</edgeTop>
+				<edgeBot>Damage/Edge</edgeBot>
+				<edgeLeft>Damage/Edge</edgeLeft>
+				<edgeRight>Damage/Edge</edgeRight>
+			</damageData>
+		</graphicData>
+		<uiIconPath>Things/Building/Structure/Portcullis</uiIconPath>
+		<size>(5,1)</size>
+		<castEdgeShadows>true</castEdgeShadows>
+		<altitudeLayer>Weather</altitudeLayer>
+		<statBases>
+			<MaxHitPoints>200</MaxHitPoints>
+			<WorkToBuild>250</WorkToBuild>
+		</statBases>
+		<costStuffCount>100</costStuffCount>
+		<costList>
+			<Steel>50</Steel>
+			<WoodLog>20</WoodLog>
+		</costList>    
+		<stuffCategories>
+			<li>Metallic</li>
+		</stuffCategories>
+		<defaultPlacingRot>North</defaultPlacingRot>
+		<terrainAffordanceNeeded>Medium</terrainAffordanceNeeded>
+		<designationCategory>Structure</designationCategory>
+		<passability>Impassable</passability>
+        <blockWind>true</blockWind>
+		<holdsRoof>true</holdsRoof>
+		<fillPercent>1</fillPercent>
+		<neverMultiSelect>true</neverMultiSelect>
+		<blockLight>True</blockLight>
+		<tickerType>Normal</tickerType>
+		<researchPrerequisites>
+			<li>StrongHinges</li>
+		</researchPrerequisites>	
+	</ThingDef>	
+	
+	<ThingDef ParentName="RetDef_Port">
+		<defName>OpenPortcullis</defName>
+		<label>open portcullis</label>
+		<description>An open impassable heavy portcullis that requires a lot of work to open but swift to close.</description>
+		<graphicData>
+			<texPath>Things/Building/Structure/OpenPortcullis</texPath>
+		</graphicData>
+		<uiIconPath>Things/Building/Structure/OpenPortcullis</uiIconPath>
+		<designationCategory></designationCategory>
+		<pathCost>0</pathCost>
+		<passability>PassThroughOnly</passability>
+		<fillPercent>0</fillPercent>
+		<blockLight>False</blockLight>
+        <blockWind>false</blockWind>
+	</ThingDef>
+</Defs>

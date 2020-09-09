@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+
+	<Hydraulics.label>hydraulics</Hydraulics.label>
+	<Hydraulics.description>Build submersible walls that can block passages and allow passage with control.</Hydraulics.description>
+
+	<StrongHinges.label>strong hinges</StrongHinges.label>
+	<StrongHinges.description>Build massive gates and portcullises that can block entry with addition labor required.</StrongHinges.description>
+
+</LanguageData>

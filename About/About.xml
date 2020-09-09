@@ -6,6 +6,6 @@
 		<li>1.1</li>
 		<li>1.2</li>  
 	</supportedVersions>
-	<description>Adds walls that submerges on command.</description>
+	<description>Adds various defenses that can control movement between spaces.</description>
 	<url>https://github.com/json-commits/RetractableDefenses</url>
 </ModMetaData>

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+	
+	<!--Industrial Tech-->
+	
+	<SubmersibleWall.label>submersible wall</SubmersibleWall.label>
+	<SubmersibleWall.description>An impassable wall that submerges when commanded to.</SubmersibleWall.description>
+	
+	<SubmersedWall.label>submerged wall</SubmersedWall.label>
+	<SubmersedWall.description>A passable submerged wall that surfaces when commanded to.</SubmersedWall.description>
+	
+	<UtilityConsole.label>utility console</UtilityConsole.label>
+	<UtilityConsole.description>Allows control over submersible walls connected to the power grid.</UtilityConsole.description>	
+
+	<!--Medieval Tech-->
+	
+	<ClosedGate.label>closed gate</ClosedGate.label>
+	<ClosedGate.description>A closed impassable heavy gate that requires a lot of work to open and close.</ClosedGate.description>
+	
+	<OpenGate.label>opened gate</OpenGate.label>
+	<OpenGate.description>An opened impassable heavy gate that requires a lot of work to open and close.</OpenGate.description>
+
+	<ClosedPortcullis.label>closed portcullis</ClosedPortcullis.label>
+	<ClosedPortcullis.description>A closed impassable heavy portcullis that requires a lot of work to open but swift to close.</ClosedPortcullis.description>
+
+	<OpenPortcullis.label>open portcullis</OpenPortcullis.label>
+	<OpenPortcullis.description>An open impassable heavy portcullis that requires a lot of work to open but swift to close.</OpenPortcullis.description>
+	
+</LanguageData>

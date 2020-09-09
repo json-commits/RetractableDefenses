@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<LanguageData>
-	<SubmersibleWall.label>submersible wall</SubmersibleWall.label>
-	<SubmersibleWall.description>An impassable wall that submerges when commanded to.</SubmersibleWall.description>
-	<SubmersedWall.label>submerged wall</SubmersedWall.label>
-	<SubmersedWall.description>A passable submerged wall that surfaces when commanded to.</SubmersedWall.description>
-	<UtilityConsole.label>utility console</UtilityConsole.label>
-	<UtilityConsole.description>Allows control over submersible walls connected to the power grid.</UtilityConsole.description>	
-</LanguageData>

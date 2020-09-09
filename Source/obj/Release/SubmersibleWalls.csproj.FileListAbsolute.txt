@@ -4,3 +4,7 @@ C:\Program Files (x86)\Steam\steamapps\common\RimWorld\Mods\Submersible Walls\So
 C:\Program Files (x86)\Steam\steamapps\common\RimWorld\Mods\Submersible Walls\Source\obj\Release\SubmersibleWalls.dll
 C:\Program Files (x86)\Steam\steamapps\common\RimWorld\Mods\Submersible Walls\1.2\Assemblies\SubmersibleWalls.dll
 C:\Program Files (x86)\Steam\steamapps\common\RimWorld\Mods\Submersible Walls\1.1\Assemblies\SubmersibleWalls.dll
+C:\Program Files (x86)\Steam\steamapps\common\RimWorld\Mods\RetractableDefenses\Assemblies\SubmersibleWalls.dll
+C:\Program Files (x86)\Steam\steamapps\common\RimWorld\Mods\RetractableDefenses\Source\obj\Release\SubmersibleWalls.csprojAssemblyReference.cache
+C:\Program Files (x86)\Steam\steamapps\common\RimWorld\Mods\RetractableDefenses\Source\obj\Release\SubmersibleWalls.csproj.CoreCompileInputs.cache
+C:\Program Files (x86)\Steam\steamapps\common\RimWorld\Mods\RetractableDefenses\Source\obj\Release\SubmersibleWalls.dll

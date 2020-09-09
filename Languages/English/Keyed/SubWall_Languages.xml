@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<LanguageData>
+	
+	<!--Mod Settings-->
+	<SubWall_mod>Submersible Walls</SubWall_mod>
+	<SubWall_Changes>Changes made will immediately take effect on a map restart changing states of the walls.</SubWall_Changes>
+	<SubWall_ticksToAction>Seconds for the wall to change state: </SubWall_ticksToAction>
+	<SubWall_powerAction>Power consumed while the walls are changing states: </SubWall_powerAction>
+	
+	<!--SubWall Actions-->
+	<SubWall_SubAction>Submerge Wall</SubWall_SubAction>
+	<SubWall_SubActionDesc>Submerge the selected walls, creating a passage through.</SubWall_SubActionDesc>
+	<SubWall_MannedError>Requires a manned utility console! Utility Console is located in the Security Tab.</SubWall_MannedError>
+	<SubWall_PowerError>Needs power!</SubWall_PowerError>
+	<SubWall_PendError>Action is in effect!</SubWall_PendError>
+	<SubWall_RiseAction>Surface Wall</SubWall_RiseAction>
+	<SubWall_RiseActionDesc>Surfaces the selected walls, blocking passage through.</SubWall_RiseActionDesc>
+	
+	<!--Gate/Portcullis-->
+	<OrderCloseThing>Close {1_labelShort}</OrderCloseThing>
+	<OrderRaiseThing>Raise {1_labelShort}</OrderRaiseThing>
+	<OrderLowerThing>Lower {1_labelShort}</OrderLowerThing>
+	<MoteShut>Closed!</MoteShut>
+	<MoteOpen>Opened!</MoteOpen>
+	
+	
+</LanguageData>
