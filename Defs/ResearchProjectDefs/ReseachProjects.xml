@@ -11,4 +11,17 @@
     <researchViewX>9.00</researchViewX>
     <researchViewY>4.80</researchViewY>
   </ResearchProjectDef>
+	
+  <ResearchProjectDef>
+	<defName>StrongHinges</defName>
+	<label>strong hinges</label>
+	<description>Build massive gates and portcullises that can block entry with addition labor required.</description>
+	<baseCost>200</baseCost>
+	<techLevel>Medieval</techLevel>
+	<prerequisites>
+		<li>Smithing</li>
+	</prerequisites>
+	<researchViewX>2.00</researchViewX>
+	<researchViewY>4.00</researchViewY>
+  </ResearchProjectDef>
 </Defs>

@@ -12,7 +12,7 @@
 			<shaderType>CutoutComplex</shaderType>
 			<linkType>CornerFiller</linkType>
 			<linkFlags>
-				<li>Barricades</li>
+				<li>Wall</li>
 				<li>Rock</li>
 			</linkFlags>
 			<damageData>
@@ -28,8 +28,8 @@
 		</graphicData>
 		<uiIconPath>Things/Building/Linked/SubWallBricks_MenuIcon</uiIconPath>
 		<statBases>
-			<MaxHitPoints>240</MaxHitPoints>
-			<WorkToBuild>65</WorkToBuild>
+			<MaxHitPoints>300</MaxHitPoints>
+			<WorkToBuild>200</WorkToBuild>
 		</statBases>
 		<pathCost>70</pathCost>
 		<costStuffCount>5</costStuffCount>
@@ -150,13 +150,15 @@
     <constructionSkillPrerequisite>5</constructionSkillPrerequisite>
   </ThingDef>
 
+	<!--Medieval Tech-->
+	
 	<ThingDef ParentName="BuildingBase" Name="RetDef_Gate">
 		<defName>ClosedGate</defName>
 		<label>closed gate</label>
-		<description>An impassable heavy gate that requires a lot of work to open and close.</description>
+		<description>A closed impassable heavy gate that requires a lot of work to open and close.</description>
 		<thingClass>Subwall.Gate</thingClass>
 		<graphicData>
-			<texPath>Things/Building/Security/Gate</texPath>
+			<texPath>Things/Building/Structure/Gate</texPath>
 			<graphicClass>Graphic_Single</graphicClass>
 			<drawSize>(5,2)</drawSize>
 			<damageData>
@@ -171,10 +173,10 @@
 			</damageData>
 		</graphicData>
 		<altitudeLayer>Weather</altitudeLayer>
-		<uiIconPath>Things/Building/Security/Gate</uiIconPath>
+		<uiIconPath>Things/Building/Structure/Gate</uiIconPath>
 		<statBases>
-			<MaxHitPoints>240</MaxHitPoints>
-			<WorkToBuild>65</WorkToBuild>
+			<MaxHitPoints>400</MaxHitPoints>
+			<WorkToBuild>300</WorkToBuild>
 		</statBases>
 		<size>(5,2)</size>
 		<pathCost>70</pathCost>
@@ -184,11 +186,11 @@
 		</costList>    
 		<stuffCategories>
 			<li>Woody</li>
+			<li>Stony</li>
 		</stuffCategories>
 		<defaultPlacingRot>North</defaultPlacingRot>
-		<hasInteractionCell>true</hasInteractionCell>
 		<terrainAffordanceNeeded>Medium</terrainAffordanceNeeded>
-		<designationCategory>Security</designationCategory>
+		<designationCategory>Structure</designationCategory>
 		<passability>Impassable</passability>
         <blockWind>true</blockWind>
 		<holdsRoof>true</holdsRoof>
@@ -197,18 +199,90 @@
 		<blockLight>True</blockLight>
 		<tickerType>Normal</tickerType>
 		<researchPrerequisites>
-			<li>Hydraulics</li>
+			<li>StrongHinges</li>
 		</researchPrerequisites>	
 	</ThingDef>
+	
 	<ThingDef ParentName="RetDef_Gate">
 		<defName>OpenGate</defName>
 		<label>opened gate</label>
+		<description>An opened impassable heavy gate that requires a lot of work to open and close.</description>
+		<designationCategory></designationCategory>
 		<graphicData>
-			<texPath>Things/Building/Security/OpenGate</texPath>
+			<texPath>Things/Building/Structure/OpenGate</texPath>
 		</graphicData>
-		<uiIconPath>Things/Building/Security/OpenGate</uiIconPath>
+		<uiIconPath>Things/Building/Structure/OpenGate</uiIconPath>
 		<pathCost>0</pathCost>
 		<passability>PassThroughOnly</passability>
 		<fillPercent>0</fillPercent>
+		<blockLight>False</blockLight>
+        <blockWind>false</blockWind>
+	</ThingDef>
+	
+	<ThingDef ParentName="BuildingBase" Name="RetDef_Port">
+		<defName>ClosedPortcullis</defName>
+		<label>closed portcullis</label>
+		<description>A closed impassable heavy portcullis that requires a lot of work to open but swift to close.</description>
+		<thingClass>Subwall.Gate</thingClass>
+		<graphicData>
+			<texPath>Things/Building/Structure/Portcullis</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<drawSize>(5,1)</drawSize>
+			<damageData>
+				<cornerTL>Damage/Corner</cornerTL>
+				<cornerTR>Damage/Corner</cornerTR>
+				<cornerBL>Damage/Corner</cornerBL>
+				<cornerBR>Damage/Corner</cornerBR>
+				<edgeTop>Damage/Edge</edgeTop>
+				<edgeBot>Damage/Edge</edgeBot>
+				<edgeLeft>Damage/Edge</edgeLeft>
+				<edgeRight>Damage/Edge</edgeRight>
+			</damageData>
+		</graphicData>
+		<uiIconPath>Things/Building/Structure/Portcullis</uiIconPath>
+		<size>(5,1)</size>
+		<castEdgeShadows>true</castEdgeShadows>
+		<altitudeLayer>Weather</altitudeLayer>
+		<statBases>
+			<MaxHitPoints>200</MaxHitPoints>
+			<WorkToBuild>250</WorkToBuild>
+		</statBases>
+		<costStuffCount>100</costStuffCount>
+		<costList>
+			<Steel>50</Steel>
+			<WoodLog>20</WoodLog>
+		</costList>    
+		<stuffCategories>
+			<li>Metallic</li>
+		</stuffCategories>
+		<defaultPlacingRot>North</defaultPlacingRot>
+		<terrainAffordanceNeeded>Medium</terrainAffordanceNeeded>
+		<designationCategory>Structure</designationCategory>
+		<passability>Impassable</passability>
+        <blockWind>true</blockWind>
+		<holdsRoof>true</holdsRoof>
+		<fillPercent>1</fillPercent>
+		<neverMultiSelect>true</neverMultiSelect>
+		<blockLight>True</blockLight>
+		<tickerType>Normal</tickerType>
+		<researchPrerequisites>
+			<li>StrongHinges</li>
+		</researchPrerequisites>	
+	</ThingDef>	
+	
+	<ThingDef ParentName="RetDef_Port">
+		<defName>OpenPortcullis</defName>
+		<label>open portcullis</label>
+		<description>An open impassable heavy portcullis that requires a lot of work to open but swift to close.</description>
+		<graphicData>
+			<texPath>Things/Building/Structure/OpenPortcullis</texPath>
+		</graphicData>
+		<uiIconPath>Things/Building/Structure/OpenPortcullis</uiIconPath>
+		<designationCategory></designationCategory>
+		<pathCost>0</pathCost>
+		<passability>PassThroughOnly</passability>
+		<fillPercent>0</fillPercent>
+		<blockLight>False</blockLight>
+        <blockWind>false</blockWind>
 	</ThingDef>
 </Defs>

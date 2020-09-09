@@ -1,16 +1,15 @@
-﻿using System.Linq;
+﻿using RimWorld;
+using SubWall.Settings;
 using System.Collections.Generic;
+using System.ComponentModel;
+using System.Linq;
 using UnityEngine;
-using RimWorld;
 using Verse;
 using Verse.AI;
-using System.Text;
-using SubWall.Settings;
-using System;
 
 namespace SubWall.Settings
 {
-	internal class SubWall_Mod : Mod
+    internal class SubWall_Mod : Mod
 	{
 		public static SubWall_ModSettings Settings;
 
@@ -60,8 +59,8 @@ namespace SubWall.Settings
 
 namespace SubWall
 {
-	//Industrial Tech
-	public class SubmersibleWall : Building
+    //Industrial Tech
+    public class SubmersibleWall : Building
     {
 		public CompPowerTrader powerComp;
 		public bool IsPowered => powerComp.PowerOn;
@@ -180,7 +179,6 @@ namespace SubWall
 		}
 	}
 	
-
 	public class SubmersedWall : SubmersibleWall
 	{
 		public static readonly ThingDef Def = ThingDef.Named("SubmersedWall");
@@ -257,6 +255,7 @@ namespace SubWall
 		}
 	}
 
+
 	//Medieval Tech
 	public class Gate : Building
     {
@@ -284,56 +283,68 @@ namespace SubWall
 			}
             else
             {
-				if(def.ToString() == "OpenGate")
+                switch (def.ToString())
                 {
-					yield return new FloatMenuOption("OrderManThing".Translate(LabelShort, this), delegate
-					{
-						Job job = JobMaker.MakeJob(SubWall_JobDefOf.RetDef_CloseGate, this);
-						myPawn.jobs.TryTakeOrderedJob(job);
-					});
+					case "OpenGate":
+						yield return new FloatMenuOption("Open".Translate(this, LabelShort), delegate
+						{
+							Job job = JobMaker.MakeJob(SubWall_JobDefOf.RetDef_CloseGate, this);
+							myPawn.jobs.TryTakeOrderedJob(job);
+						});
+						break;
+
+					case "ClosedGate":
+						yield return new FloatMenuOption("OrderCloseThing".Translate(LabelShort, this), delegate
+						{
+							Job job = JobMaker.MakeJob(SubWall_JobDefOf.RetDef_OpenGate, this);
+							myPawn.jobs.TryTakeOrderedJob(job);
+						});
+						break;
+
+					case "OpenPortcullis":
+						yield return new FloatMenuOption("OrderRaiseThing".Translate(LabelShort, this), delegate
+						{
+							Job job = JobMaker.MakeJob(SubWall_JobDefOf.RetDef_ClosePort, this);
+							myPawn.jobs.TryTakeOrderedJob(job);
+						});
+						break;
+
+					case "ClosedPortcullis":
+						yield return new FloatMenuOption("OrderLowerThing".Translate(LabelShort, this), delegate
+						{
+							Job job = JobMaker.MakeJob(SubWall_JobDefOf.RetDef_OpenPort, this);
+							myPawn.jobs.TryTakeOrderedJob(job);
+						});
+						break;
 				}
-				if(def.ToString() == "ClosedGate")
-                {
-					yield return new FloatMenuOption("OrderManThing".Translate(LabelShort, this), delegate
-					{
-						Job job = JobMaker.MakeJob(SubWall_JobDefOf.RetDef_OpenGate, this);
-						myPawn.jobs.TryTakeOrderedJob(job);
-					});
 				}
             }
-	}
-		//*/
-        public override string GetInspectString()
-        {
-			StringBuilder stringBuilder = new StringBuilder();
-			string baseString = base.GetInspectString();
-			if (!baseString.NullOrEmpty())
-			{
-				stringBuilder.Append(baseString);
-				stringBuilder.AppendLine();
-			}
-			stringBuilder.Append(this.def.ToString());
-
-			return stringBuilder.ToString().TrimEndNewlines();
+	//*/
+	/*
+	public override string GetInspectString()
+	{
+		StringBuilder stringBuilder = new StringBuilder();
+		string baseString = base.GetInspectString();
+		if (!baseString.NullOrEmpty())
+		{
+			stringBuilder.Append(baseString);
+			stringBuilder.AppendLine();
 		}
-    }
-	[DefOf]
-	class SubWall_JobDefOf
-    {
-		public static JobDef RetDef_CloseGate;
-		public static JobDef RetDef_OpenGate;
+		stringBuilder.Append(this.def.ToString());
+
+		return stringBuilder.ToString().TrimEndNewlines();
+	
+	*/
 	}
-	///*
+
 	public abstract class JobDriver_AffectGate : JobDriver
-    {
+	{
 		private float workLeft = -1000f;
 
-		protected int BaseWorkAmount => 4000;
-
-		protected DesignationDef DesDef => DesignationDefOf.SmoothWall;
+		protected int BaseWorkAmount = 4000;
 
 		public override bool TryMakePreToilReservations(bool errorOnFailed)
-        {
+		{
 			return pawn.Reserve(job.targetA, job, 1, -1, null, errorOnFailed);
 		}
 
@@ -343,14 +354,14 @@ namespace SubWall
 			//this.FailOn(() => (!jobDriver_CloseGate.job.ignoreDesignations && jobDriver_CloseGate.Map.designationManager.DesignationAt(jobDriver_CloseGate.TargetLocA, jobDriver_CloseGate.DesDef) == null) ? true : false);
 			//this.FailOnDespawnedNullOrForbidden(TargetIndex.A);
 			yield return Toils_Goto.GotoCell(TargetIndex.A, PathEndMode.Touch);
-            Toil doWork = new Toil
-            {
-                initAction = delegate
-                {
-                    workLeft = BaseWorkAmount;
+			Toil doWork = new Toil
+			{
+				initAction = delegate
+				{
+					workLeft = BaseWorkAmount;
 				}
-            };
-            doWork.tickAction = delegate
+			};
+			doWork.tickAction = delegate
 			{
 				float num = doWork.actor.GetStatValue(StatDefOf.GeneralLaborSpeed) * 1.7f;
 				workLeft -= num;
@@ -372,27 +383,69 @@ namespace SubWall
 			yield return doWork;
 		}
 		protected abstract void AffectGate();
-    }
+	}
+
 	public class JobDriver_CloseGate : JobDriver_AffectGate
-    {
+	{
 		protected override void AffectGate()
-        {
-			MoteMaker.ThrowText(TargetThingA.TrueCenter(), this.Map, "Gate Closed!", 1f);
+		{
+			MoteMaker.ThrowText(TargetThingA.TrueCenter(), this.Map, "MoteShut".Translate(), 1f);
 			Building building = (Building)ThingMaker.MakeThing(ThingDef.Named("ClosedGate"), TargetThingA.Stuff);
 			building.SetFaction(TargetThingA.Faction);
 			GenSpawn.Spawn(building, TargetThingA.Position, TargetThingA.Map, TargetThingA.Rotation, WipeMode.Vanish);
 		}
-    }
+	}
 
 	public class JobDriver_OpenGate : JobDriver_AffectGate
 	{
 		protected override void AffectGate()
 		{
-			MoteMaker.ThrowText(TargetThingA.TrueCenter(), this.Map, "Gate Opened!", 1f);
+			MoteMaker.ThrowText(TargetThingA.TrueCenter(), this.Map, "MoteOpen".Translate(), 1f);
 			Building building = (Building)ThingMaker.MakeThing(ThingDef.Named("OpenGate"), TargetThingA.Stuff);
 			building.SetFaction(TargetThingA.Faction);
 			GenSpawn.Spawn(building, TargetThingA.Position, TargetThingA.Map, TargetThingA.Rotation, WipeMode.Vanish);
 		}
 	}
-	//*/
+
+	public class JobDriver_ClosePort : JobDriver_AffectGate
+	{
+		public JobDriver_ClosePort()
+		{
+			BaseWorkAmount = 1000;
+		}
+		protected override void AffectGate()
+		{
+			MoteMaker.ThrowText(TargetThingA.TrueCenter(), this.Map, "MoteShut".Translate(), 1f);
+			Building building = (Building)ThingMaker.MakeThing(ThingDef.Named("ClosedPortcullis"), TargetThingA.Stuff);
+			building.SetFaction(TargetThingA.Faction);
+			GenSpawn.Spawn(building, TargetThingA.Position, TargetThingA.Map, TargetThingA.Rotation, WipeMode.Vanish);
+		}
+	}
+
+	public class JobDriver_OpenPort : JobDriver_AffectGate
+	{
+		public JobDriver_OpenPort()
+		{
+			BaseWorkAmount = 6000;
+		}
+		protected override void AffectGate()
+		{
+			MoteMaker.ThrowText(TargetThingA.TrueCenter(), this.Map, "MoteOpen".Translate(), 1f);
+			Building building = (Building)ThingMaker.MakeThing(ThingDef.Named("OpenPortcullis"), TargetThingA.Stuff);
+			building.SetFaction(TargetThingA.Faction);
+			GenSpawn.Spawn(building, TargetThingA.Position, TargetThingA.Map, TargetThingA.Rotation, WipeMode.Vanish);
+		}
+	}
+
+
+	[DefOf]
+	class SubWall_JobDefOf
+	{
+		public static JobDef RetDef_CloseGate;
+		public static JobDef RetDef_OpenGate;
+		public static JobDef RetDef_ClosePort;
+		public static JobDef RetDef_OpenPort;
+	}
 }
+
+	//*/

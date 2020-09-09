@@ -4,12 +4,24 @@
 	<JobDef>
 		<defName>RetDef_OpenGate</defName>
 		<driverClass>SubWall.JobDriver_OpenGate</driverClass>
-		<reportString>opening gate.</reportString>
+		<reportString>opening TargetA.</reportString>
 	</JobDef>
 
 	<JobDef>
 		<defName>RetDef_CloseGate</defName>
 		<driverClass>SubWall.JobDriver_CloseGate</driverClass>
-		<reportString>closing gate.</reportString>
+		<reportString>closing TargetA.</reportString>
+	</JobDef>
+
+	<JobDef>
+		<defName>RetDef_OpenPort</defName>
+		<driverClass>SubWall.JobDriver_OpenPort</driverClass>
+		<reportString>raising TargetA.</reportString>
+	</JobDef>
+
+	<JobDef>
+		<defName>RetDef_ClosePort</defName>
+		<driverClass>SubWall.JobDriver_ClosePort</driverClass>
+		<reportString>lowering TargetA.</reportString>
 	</JobDef>
 </Defs>
