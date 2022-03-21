@@ -41,8 +41,20 @@
     <None Include="..\Common\Patches\**" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Gate.cs" />
+    <Compile Include="JobDriver_AffectGate.cs" />
+    <Compile Include="JobDriver_CloseGate.cs" />
+    <Compile Include="JobDriver_ClosePort.cs" />
+    <Compile Include="JobDriver_OpenGate.cs" />
+    <Compile Include="JobDriver_OpenPort.cs" />
+    <Compile Include="SubmersedWall.cs" />
     <Compile Include="SubmersibleWall.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SubWall_JobDefOf.cs" />
+    <Compile Include="SubWall_Mod.cs" />
+    <Compile Include="SubWall_ModSettings.cs" />
+    <Compile Include="SurfacedWall.cs" />
+    <Compile Include="UtilityConsole.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
